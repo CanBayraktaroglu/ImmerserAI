@@ -1,0 +1,19 @@
+{
+  "name": "discordbot",
+  "version": "1.0.0",
+  "description": "An immersive and dynamic discord bot for detecting swear words, interacting with members of a channel and providing multiple utilities.",
+  "main": "bot.js",
+  "scripts": {
+    "test": "node .\\events\\ready.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CanBayraktaroglu/DiscordBotCS50.git"
+  },
+  "author": "Can Bayraktaroglu",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/CanBayraktaroglu/DiscordBotCS50/issues"
+  },
+  "homepage": "https://github.com/CanBayraktaroglu/DiscordBotCS50#readme"
+}
