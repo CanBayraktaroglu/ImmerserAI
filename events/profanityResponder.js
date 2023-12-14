@@ -18,18 +18,27 @@ module.exports = {
         const cbMiYazdi = message.guild.ownerId === message.author.id;
 
         await request.execute(mesaj).then((response)=>{
-            //console.log(`response: ${response}, type: ${Object.prototype.toString.call(response)}`);
-            const cevap = response.pop()
-            //console.log(`response: ${cevap}, type: ${Object.prototype.toString.call(cevap)}, length: ${cevap.length}`);
-            
-            if (cevap === "True") {
-                if (cbMiYazdi) {
-                    message.reply("Yoo bro why u mad doe??");
+                //console.log(`response: ${response}, type: ${Object.prototype.toString.call(response)}`);
+                const cevap = response.pop()
+                //onsole.log(`response: ${cevap}, type: ${Object.prototype.toString.call(cevap)}, length: ${cevap.length}`);
+
+                if (cevap === "True" || cevap === "False"){
+                    if (cevap.length === 4) {
+                        if (cbMiYazdi) {
+                            message.reply("Yoo bro why u mad doe??");
+                        }
+                        else {
+                            message.channel.send("Dude chill, we dont fuck with that profanity shit around here! ");
+                        }
+                    }
                 }
-                else {
-                    message.channel.send("Dude chill, we dont fuck with that profanity shit around here! ");
+                else if (cevap.length === 0){
+                    message.reply("dont know bro wallah.");
                 }
-            }
+
+                else{
+                    message.reply(cevap);
+                }
             }
 
         );

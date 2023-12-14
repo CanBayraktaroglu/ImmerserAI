@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 module.exports = {
     name: Events.MessageCreate,
     async execute(data) {
+        //console.log( data);
         try {
             const response = await fetch('http://localhost:5000/', {
                 method: 'POST',
