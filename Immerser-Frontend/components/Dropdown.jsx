@@ -1,7 +1,8 @@
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Dropdown.css';
-import { MenuItems } from './MenuItems'
+import { MenuItems } from './MenuItems';
+import { Dropdown as dd, DropdownButton } from 'react-bootstrap';
 
 
 
@@ -12,17 +13,22 @@ const Dropdown = () => {
 
     return (
         <>
-            <ul onClick={handleclick} className={click ? 'dropdown-menu-clicked' : 'dropdown-menu'}>
+
+            <DropdownButton id='dropdown-basic-button' title='Features' onClick={handleclick} >
+
                 {MenuItems.map((item, index) => {
+
                     return (
-                        <li key={index}>
-                            <Link className={item.cName} to={item.path} onClick={() => setClick(false)}>
-                                {item.title}
-                            </Link>
-                        </li>
+                        <dd.Item href={item.path} key={index} onClick={() => setClick(false)}>
+                            {item.title}
+                        </dd.Item>
+
                     )
                 })}
-            </ul>
+
+            </DropdownButton>
+
+
         </>
     );
 };

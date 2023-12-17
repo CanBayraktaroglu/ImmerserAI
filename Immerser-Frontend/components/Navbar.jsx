@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import '../styles/Navbar.css';
-//import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
+import { Dropdown as dd } from 'react-bootstrap';
+import { MenuItems } from './MenuItems';
+
 
 
 const Navbar = () => {
@@ -41,12 +43,11 @@ const Navbar = () => {
                             About
                         </Link>
                     </li>
+
                     <li className='nav-item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                        <Link to='/features' className='nav-links' onClick={closeMobileMenu}>
-                            Features <i className='fas fa-caret-down' />
-                        </Link>
-                        {dropdown && <Dropdown />}
+                        <Dropdown />
                     </li>
+
                     <li className='nav-item'>
                         <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>
                             Contact
@@ -57,30 +58,6 @@ const Navbar = () => {
             </nav>
         </>
     )
-    /* const [dropdownOpen, setDropdownOpen] = useState(false);
-
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
-    };
-
-    return (
-        <nav className="navbar">
-            <div className="navbar-brand">Immerser</div>
-            <ul className="navbar-nav">
-                <li className="nav-item"><a href="/">Home</a></li>
-                <li className="nav-item"><a href="/about">About</a></li>
-                <li className="nav-item dropdown">
-                    <button onClick={toggleDropdown} className="dropbtn">Features</button>
-                    {dropdownOpen && (
-                        <div className="dropdown-content">
-                            <a href="/status">Status</a>
-                        </div>
-                    )}
-                </li>
-                <li className="nav-item"><a href="/contact">Contact</a></li>
-            </ul>
-        </nav>
-    ); */
 };
 
 export default Navbar;

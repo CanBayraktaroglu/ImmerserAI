@@ -1,11 +1,6 @@
-import React from 'react';
 
 export const MenuItems = [
-    {
-        title: 'Status',
-        path: '/status',
-        cName: 'dropdown-link'
-    },
+
     {
         title: 'Profanity-Checker',
         path: '/profanity',
