@@ -17,6 +17,8 @@
     /* White text color */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* Smooth transition for hover effect */
+    max-width: min-content;
+    max-height: min-content;
 }
 
 .custom-card:hover {
@@ -37,4 +39,5 @@
     /* Semi-transparent background for the content */
     backdrop-filter: blur(10px);
     /* Blur effect for the background */
+
 }
