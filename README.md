@@ -1,0 +1,4 @@
+# Immerser - An Intelligent, dynamic and immersive Discord Bot
+#### Video Demo:  <https://youtu.be/3VeBHof33ZY>
+#### Description: An immersive and dynamic discord bot for detecting swear words, interacting with members of a channel and providing multiple utilities. Simply put, open source GPT 3.5-level LLM provided to all guild members free of charge. For non-commercial usage only!
+#### Instructions: Generate a config.json file in the project folder with the following keys: botName,clientId,publicKey,permissionsInt,token,inviteLink,guildId,HFtoken,ownerId,systemPromptLLM and their objects respectively. Then download all necessary packages for node.js and python venv. Finally, download LM Studio and install mistral 4 bit quantized Open-Source LLM  on LM Studio. Start the server on LM Studio, run the "python ./app.py" and "node ./bot.js" commands on 2 powershells synchronously. Voila!

@@ -25,12 +25,11 @@ module.exports = {
             mesaj = "<@" + message.author.id + "> speaks: " + mesaj;
         }
 
-        mesaj = mesaj.substring(0, 1900).replace("Immerser: ", '');
-
         await request.execute(mesaj).then((response) => {
             //console.log(`response: ${response}, type: ${Object.prototype.toString.call(response)}`);
-            const cevap = response.pop()
+            let cevap = response.pop()
             //console.log(`response: ${cevap}, type: ${Object.prototype.toString.call(cevap)}, length: ${cevap.length}`);
+            cevap = cevap.replace('Immerser: ', '').substring(0, 2000);
 
             if (cevap === "True" || cevap === "False") {
                 if (cevap.length === 4) {
