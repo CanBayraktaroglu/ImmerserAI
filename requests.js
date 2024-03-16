@@ -6,7 +6,7 @@ module.exports = {
     async execute(data) {
         //console.log( data);
         try {
-            const response = await fetch('http://localhost:5000/', {
+            const response = await fetch('http://127.0.0.1:5000', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -19,7 +19,6 @@ module.exports = {
             }
 
             const responseData = await response.json();
-            //console.log('Response from Flask:', responseData.data);
             return responseData;
         } catch (error) {
             console.error('Error sending data to Flask server:', error);

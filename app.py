@@ -1,38 +1,27 @@
-from profanity_check import predict, predict_prob
+from profanity_check import predict_prob
 from flask import Flask, request, jsonify
 import json
 import os
-from openai import OpenAI
+from groq import Groq
+
 
 app = Flask(__name__)
 
 with open('config.json') as fp:
     data = json.load(fp)
-    os.environ['HUGGINGFACEHUB_API_TOKEN'] = data["HFtoken"]
+    os.environ['GROQ_API_KEY'] = data["groq_api_key"]
     botId = data["clientId"]
     ownerId = data["ownerId"]
     systemPromptLLM = data["systemPromptLLM"]
     
 # Point to the local server
-client = OpenAI(base_url="http://localhost:1234/v1", api_key="not-needed")
+client = Groq(api_key=os.environ['GROQ_API_KEY'])
 
-history = [
-    {"role": "system", "content": systemPromptLLM},
-    {"role": "user", "content": "Hello, introduce yourself to someone you met for the first time. Be concise."},
-]
-
-completion = client.chat.completions.create(
-            model="local-model", # this field is currently unused
-            messages=history,
-            temperature=0.7,
-            stream=True,)   
-   
 @app.route('/', methods=['GET','POST'])
 def predict():
-    global history 
     
     if request.method == 'GET':
-        return jsonify(history[-1]["content"])
+        return "Hello, World!"
     
     else:
         # Get data from POST request
@@ -42,28 +31,25 @@ def predict():
         profanity_prob = predict_prob([data])
         profanity_present = profanity_prob > 0.7
         
-        if "immerser," in data or botId in data: #"<" in data and "@" in data and ">" in data:
-            
-            msg_from_user = {"role": "user", "content": data}
-            history.append(msg_from_user)
-            
+        if "immerser" in data or botId in data: #"<" in data and "@" in data and ">" in data:
+
             completion = client.chat.completions.create(
-                model="local-model", # this field is currently unused
-                messages=history,
-                temperature=0.7,
-                stream=True,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": systemPromptLLM
+                    },
+                    {
+                        "role": "user",
+                        "content": data,
+                    }
+                ],
+                model="mixtral-8x7b-32768",
             )
-            
-            new_message = {"role": "assistant", "content": ""}
-            
-            for chunk in completion:
-                if chunk.choices[0].delta.content:
-                    #print(chunk.choices[0].delta.content, end="", flush=True)    
-                    new_message["content"] += chunk.choices[0].delta.content
-            
-            history.append(new_message)
-                        
-            return jsonify([new_message["content"]])
+        
+            output = completion.choices[0].message.content
+        
+            return jsonify(output)
         
         return jsonify(list(map(str,profanity_present)))
 

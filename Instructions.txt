@@ -3,3 +3,5 @@ python app.py
 
 node .\bot.js
 node .\deploy-commands.js
+
+https://discord.com/api/oauth2/authorize?client_id=1184455054170796052&permissions=0&scope=bot%20applications.commands
