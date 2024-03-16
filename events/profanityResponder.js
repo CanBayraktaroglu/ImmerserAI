@@ -26,8 +26,14 @@ module.exports = {
         }
 
         await request.execute(mesaj).then((response) => {
-            //console.log(`response: ${response}, type: ${Object.prototype.toString.call(response)}`);
-            let cevap = response
+            console.log(`response: ${response}, type: ${Object.prototype.toString.call(response)}`);
+            var cevap;
+            if (typeof response === 'string') {
+                cevap = response;
+            } else {
+                cevap = response.pop();
+            }
+            
             //console.log(`response: ${cevap}, type: ${Object.prototype.toString.call(cevap)}, length: ${cevap.length}`);
             cevap = cevap.replace('Immerser: ', '').substring(0, 2000);
 
