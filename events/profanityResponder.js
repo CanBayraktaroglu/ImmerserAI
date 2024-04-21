@@ -17,13 +17,13 @@ module.exports = {
 
         const cbMiYazdi = message.guild.ownerId === message.author.id;
 
-        if (cbMiYazdi) {
-            mesaj = "Your Master and the High King <@" + message.guild.ownerId + "> speaks: " + mesaj;
+        /* if (cbMiYazdi) {
+            mesaj = "Yüksek kral <@" + message.guild.ownerId + "> : \n" + mesaj;
             //console.log(mesaj)
         }
         else {
-            mesaj = "<@" + message.author.id + "> speaks: " + mesaj;
-        }
+            mesaj = "<@" + message.author.id + "> : \n" + mesaj;
+        } */
 
         await request.execute(mesaj).then((response) => {
             console.log(`response: ${response}, type: ${Object.prototype.toString.call(response)}`);
