@@ -1,5 +1,4 @@
 # Immerser - An Intelligent, dynamic and immersive Discord Bot
-## Video Demo:  <https://youtu.be/3VeBHof33ZY>
 ## GitHub Link: <https://github.com/CanBayraktaroglu/Immerser.git>
 ## Description:
 
